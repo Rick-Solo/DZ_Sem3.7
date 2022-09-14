@@ -8,28 +8,29 @@
 
 // 8 7,8 -7,1 9
 
-Console.Write("Введите количество строк (m): ");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите количество столбцов (n): ");
-int columns = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите множител для диапазона (0.0; 1.0) (k): "); //функция возвращает от 0.0 до 1.0, поэтому нужно домножать на произвольное число,
-int k = Convert.ToInt32(Console.ReadLine());                      //чтобы расширить диапозон
+// Console.Write("Введите количество строк (m): ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите количество столбцов (n): ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите множител для диапазона (0.0; 1.0) (k): "); //функция возвращает от 0.0 до 1.0, поэтому нужно домножать на произвольное число,
+// int k = Convert.ToInt32(Console.ReadLine());                      //чтобы расширить диапозон
 
-double[,] mass = new double[rows, columns];
+// double[,] mass = new double[rows, columns];
 
-for (int i = 0; i < rows; i++)
-{
-    for (int j = 0; j < columns; j++)
-    {
-        mass[i, j] = new Random().NextDouble()*k;       //mass[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
-        Console.Write("{0:0.000}     ", mass[i, j]);
-    }
-    Console.WriteLine();
-}
+// for (int i = 0; i < rows; i++)
+// {
+//     for (int j = 0; j < columns; j++)
+//     {
+//         mass[i, j] = new Random().NextDouble() * k;
+//         Console.Write("{0:0.000}     ", mass[i, j]);
+//     }
+//     Console.WriteLine();
+// }
 
 // -----------------------------------------------
 
-// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента 
+// или же указание, что такого элемента нет.
 
 // Например, задан массив:
 
@@ -40,6 +41,38 @@ for (int i = 0; i < rows; i++)
 // 8 4 2 4
 
 // 17 -> такого числа в массиве нет
+
+Console.Write("Перед поиском сздайте массив." + "\n" + "Введите количество строк: ");
+int sizeM = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int sizeN = Convert.ToInt32(Console.ReadLine());
+int[,] array = new int[sizeM, sizeN];
+for (int i = 0; i < sizeM; i++)
+{
+    for (int j = 0; j < sizeN; j++)
+    {
+        array[i, j] = new Random().Next(0, 1000);
+        Console.Write(array[i, j] + "\t");
+    }
+    Console.WriteLine();
+}
+
+Console.Write("Начинаем поиск элемента" + "\n" + "Введите индекс строк (m): ");
+int m = Convert.ToInt32(Console.ReadLine())-1;
+Console.Write("Введите индекс столбцов (n): ");
+int n = Convert.ToInt32(Console.ReadLine())-1;
+
+if (m < sizeM && n < sizeN)
+{
+    Console.WriteLine($"Искомый элемент = {array[m, n]}");
+}
+else
+{
+    Console.WriteLine("Tакого числа в массиве нет");
+}
+
+
+// -------------------------------------------------
 
 // Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
