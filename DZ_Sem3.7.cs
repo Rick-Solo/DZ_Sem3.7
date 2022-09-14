@@ -12,8 +12,8 @@
 // int rows = Convert.ToInt32(Console.ReadLine());
 // Console.Write("Введите количество столбцов (n): ");
 // int columns = Convert.ToInt32(Console.ReadLine());
-// Console.Write("Введите множител для диапазона (0.0; 1.0) (k): "); //функция возвращает от 0.0 до 1.0, поэтому нужно домножать на произвольное число,
-// int k = Convert.ToInt32(Console.ReadLine());                      //чтобы расширить диапозон
+// Console.Write("Введите множител для диапазона (0.0; 1.0) (k): "); //функция возвращает от 0.0 до 1.0, поэтому нужно домножать 
+// int k = Convert.ToInt32(Console.ReadLine());                      //на произвольное число,чтобы расширить диапозон
 
 // double[,] mass = new double[rows, columns];
 
@@ -42,7 +42,47 @@
 
 // 17 -> такого числа в массиве нет
 
-Console.Write("Перед поиском сздайте массив." + "\n" + "Введите количество строк: ");
+// Console.Write("Перед поиском сздайте массив." + "\n" + "Введите количество строк: ");
+// int sizeM = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите количество столбцов: ");
+// int sizeN = Convert.ToInt32(Console.ReadLine());
+// int[,] array = new int[sizeM, sizeN];
+// for (int i = 0; i < sizeM; i++)
+// {
+//     for (int j = 0; j < sizeN; j++)
+//     {
+//         array[i, j] = new Random().Next(0, 1000);
+//         Console.Write(array[i, j] + "\t");
+//     }
+//     Console.WriteLine();
+// }
+
+// Console.Write("Начинаем поиск элемента." + "\n" + "Введите индекс строк (m): ");
+// int m = Convert.ToInt32(Console.ReadLine())-1;
+// Console.Write("Введите индекс столбцов (n): ");
+// int n = Convert.ToInt32(Console.ReadLine())-1;
+
+// if (m < sizeM && n < sizeN)
+// {
+//     Console.WriteLine($"Искомый элемент = {array[m, n]}");
+// }
+// else
+// {
+//     Console.WriteLine("Tакого числа в массиве нет");
+// }
+
+
+// -------------------------------------------------
+
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+Console.Write("Введите количество строк: ");
 int sizeM = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов: ");
 int sizeN = Convert.ToInt32(Console.ReadLine());
@@ -57,27 +97,14 @@ for (int i = 0; i < sizeM; i++)
     Console.WriteLine();
 }
 
-Console.Write("Начинаем поиск элемента" + "\n" + "Введите индекс строк (m): ");
-int m = Convert.ToInt32(Console.ReadLine())-1;
-Console.Write("Введите индекс столбцов (n): ");
-int n = Convert.ToInt32(Console.ReadLine())-1;
-
-if (m < sizeM && n < sizeN)
+double[] average = new double[sizeN];
+for (int j = 0; j < sizeN; j++)
 {
-    Console.WriteLine($"Искомый элемент = {array[m, n]}");
+    int sum = 0;
+    for (int i = 0; i < sizeM; i++)
+    {
+        sum += array[i,j];
+    }
+    average[j] = sum/sizeM;
 }
-else
-{
-    Console.WriteLine("Tакого числа в массиве нет");
-}
-
-
-// -------------------------------------------------
-
-// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+Console.Write("Среднее арифметическое каждого столбца: " + string.Join("; ", average));
